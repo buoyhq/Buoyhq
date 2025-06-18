@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUOY - Kristen Lopez | Finance & Investment Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #cccccc;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #cccccc);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #cccccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: #999999;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ffffff, #cccccc);
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Bio Section */
+        .bio {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .bio-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bio-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffffff;
+        }
+
+        .bio-content p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-tag:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 8rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: #ffffff;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .experience-card .company {
+            color: #cccccc;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .duration {
+            color: #999999;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.02));
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        input, textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            color: #ffffff;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #999999;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ffffff, #cccccc);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-self: center;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .bio-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .bio-content h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Interactive elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element" style="left: 10%; width: 20px; height: 20px; animation-delay: 0s;"></div>
+        <div class="floating-element" style="left: 20%; width: 15px; height: 15px; animation-delay: 5s;"></div>
+        <div class="floating-element" style="left: 70%; width: 25px; height: 25px; animation-delay: 10s;"></div>
+        <div class="floating-element" style="left: 90%; width: 18px; height: 18px; animation-delay: 15s;"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">
+            <img src="Buoy-Logo.png" alt="Buoy Logo" style="height: 40px;">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#bio">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+  <div class="hero-content">
+    <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+      <img src="Buoy-Logo.png" alt="Buoy Logo" style="height: 90px;">
+    </div>
+    <div class="subtitle">Startup & Small Business Consulting Services</div>
+    <div class="description">
+      Buoy is a modern consultancy built to support growing businesses.
+We work with founders, entrepreneurs, and small teams to build sustainable systems across financial modeling, FP&A, administrative operations, website development, marketing strategy, and design. Whether you're scaling quickly or getting organized for the first time, we bring the tools, structure, and clarity to support your next move.
+    </div>
+    <a href="#bio" class="cta-button">Learn More</a>
+  </div>
+</section>
+
+    <section id="bio" class="bio">
+        <div class="container">
+            <div class="bio-grid">
+                <div class="bio-image">
+    <img src="Kristen-headshot.png" alt="Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+</div>
+                <div class="bio-content">
+                    <h2>Kristen Lopez, Co-Founder</h2>
+                    <p>
+                        Kristen has built her career at the intersection of finance, investment strategy, and innovative business models. Her expertise spans financial modeling, asset management, and strategic planning within high-growth startups and emerging industries.
+                    </p>
+                    <p>
+                        Most recently, she served as Senior Director of Asset Management at AutoCamp, a pioneer in the outdoor hospitality space. There, she led key initiatives across investment strategy and financial operations, helping shape the company’s growth trajectory. Kristen brings a deep passion for excellence, adaptability, and long-term value creation.
+                    </p>
+                    <p>
+                        She holds a degree in Political Science from UCLA, graduating magna cum laude, and is currently pursuing her MBA at UCLA Anderson. She specializes in building robust financial models, optimizing asset performance, and driving data-informed decisions that support sustainable growth in dynamic startup environments.
+                    </p>
+                    <p>
+                       When she’s not working on a project, Kristen can be found playing pickleball, volunteering locally, enjoying the outdoors, trying new restaurants, or traveling to explore new places. 
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">Financial Modeling</span>
+                        <span class="highlight-tag">Asset Management</span>
+                        <span class="highlight-tag">Investment Strategy</span>
+                        <span class="highlight-tag">Startup Finance</span>
+                        <span class="highlight-tag">MBA Candidate</span>
+                        <span class="highlight-tag">UCLA Alumni</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="partner-bio" class="bio">
+        <div class="container">
+            <div class="bio-grid">
+                <div class="bio-image">
+    <img src="Chiara-headshot.png" alt="Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+</div>
+                <div class="bio-content">
+                    <h2>Chiara DiMarco, Co-Founder</h2>
+                    <p>
+                        Chiara DiMarco is a former collegiate athlete with a deep-rooted passion for sports, equity, and community impact. She holds a degree in Business and Marketing from Cal State LA and brings nearly a decade of experience as a Research Administrator at UC Santa Barbara, where she managed multimillion-dollar grants focused on social sciences and equity research.
+                    </p>
+                    <p>
+                        Her background blends operational expertise, strategic thinking, and a strong commitment to accessible, mission-driven work. Chiara supports small businesses and startups by helping them build solid foundations across marketing, client strategy, and administrative systems — always with an eye toward long-term impact.
+                    </p>
+                    <p>
+                        When she’s not working, you’ll likely find her outdoors, coaching, watching sports, or traveling to new places.
+                    </p>
+                    <div class="highlights">
+                        <span class="highlight-tag">Marketing Strategy</span>
+                        <span class="highlight-tag">Grant Management</span>
+                        <span class="highlight-tag">Graphic Design</span>
+                        <span class="highlight-tag">Website Creation/Design</span>
+                        <span class="highlight-tag">Client Strategy</span>
+                        <span class="highlight-tag">Coaching/Mentorship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Companies We've Worked With</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>AutoCamp Hospitality Group</h3>
+                    <div class="company">Outdoor Hospitality/Real Estate</div>
+            
+                    <p>Served as an investment, asset, and fund management lead across AutoCamp and its sister brand Field Station. Providing ongoing financial modeling, portfolio oversight, and operational support and continuing to support the team through strategic consulting and scaling initiatives.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>IMPaCt Care</h3>
+                    <div class="company">Healthcare Technology/Health Equity</div>
+                    <p>Supporting finance and strategic planning initiatives for a health equity startup focused on social care integration. Assisting with financial modeling, Excel tool development, and scalable processes to strengthen operational efficiency and prepare for future growth.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>New Mexico Climate Investment Center</h3>
+                    <div class="company">Climate Finance/Green Bank</div>
+                    <p>Supported the state’s green bank initiative through financial modeling and strategy for climate-related investments. Collaborated with leadership to develop tools that guide funding decisions, assess project viability, and promote sustainable economic growth through public-private partnerships.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>SP Survival Swim</h3>
+                    <div class="company">Infant Swimming Resource/Water Safety</div>
+                    <p>Helped launch and support a Santa Paula–based ISR swim program focused on infant and child water safety. Led the creation of their website and continue to provide administrative and marketing support to streamline operations and grow local engagement.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>McDonald Fitness</h3>
+                    <div class="company">Health/Wellness</div>
+                    <p> Partnered with certified personal trainer and multiple world record–holding track athlete Sue McDonald to elevate her fitness brand. Led marketing strategy, website development, and graphic design to enhance her online presence and attract a broader client base.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Harry Marra</h3>
+                    <div class="company">Elite Sports Performance/Athletic Coaching</div>
+                    <p>Partnered with world-renowned track and field coach Harry Marra, best known for coaching Olympic decathlon gold medalist Ashton Eaton. We provided design and marketing support to help elevate his coaching brand and communicate his legacy in athletic development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <input type="text" placeholder="Subject" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+    <img src="Buoy-Logo.png" alt="Buoy Logo" style="height: 40px;">
+</div>
+                <ul class="footer-links">
+    <li><a href="mailto:buoyteams@gmail.com">Email</a></li>
+    <li><a href="#home">Home</a></li>
+</ul>
+            </div>
+            <p style="margin-top: 2rem; color: #666;">&copy; 2025 BUOY. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const name = event.target.querySelector('input[placeholder="Your Name"]').value;
+            const email = event.target.querySelector('input[placeholder="Your Email"]').value;
+            const subject = event.target.querySelector('input[placeholder="Subject"]').value;
+            const message = event.target.querySelector('textarea').value;
+            
+            // Simulate form submission
+            const submitBtn = event.target.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert(Thank you ${name}! Your message has been sent. I'll get back to you soon.);
+                event.target.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.experience-card, .bio-content, .bio-image').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dynamic floating elements
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            element.style.left = Math.random() * 100 + '%';
+            element.style.width = element.style.height = Math.random() * 20 + 10 + 'px';
+            element.style.animationDelay = '0s';
+            element.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            
+            document.querySelector('.floating-elements').appendChild(element);
+            
+            setTimeout(() => {
+                element.remove();
+            }, 25000);
+        }
+
+        // Create floating elements periodically
+        setInterval(createFloatingElement, 3000);
+    </script>
+</body>
+</html>
