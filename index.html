@@ -179,11 +179,13 @@
             grid-template-columns: 1fr 2fr;
             gap: 4rem;
             align-items: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .bio-image {
-            width: 300px;
-            height: 300px;
+            width: 220px;
+            height: 220px;
             border-radius: 20px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
             display: flex;
@@ -196,8 +198,8 @@
         }
 
         .bio-content h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             color: #ffffff;
         }
 
@@ -230,20 +232,24 @@
 
         /* Experience Section */
         .experience {
-            padding: 8rem 0;
+            padding: 6rem 0 6rem;
         }
 
         .section-title {
             text-align: center;
-            font-size: 3rem;
-            margin-bottom: 4rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: #ffffff;
         }
 
         .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+              display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                margin-top: 0;
+                padding-top: 0;
         }
 
         .experience-card {
@@ -414,7 +420,7 @@
             }
 
             .bio-content h2 {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
         }
 
@@ -457,7 +463,40 @@
                 opacity: 0;
             }
         }
-    </style>
+/* Side-by-side bio layout */
+.two-column-bio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.bio-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .two-column-bio {
+    grid-template-columns: 1fr;
+  }
+}
+/* Better height handling in iOS Safari */
+.hero {
+  min-height: 100svh; /* replaces 100vh for better iOS behavior */
+}
+
+/* Ensure tap targets are large enough on iOS */
+.cta-button, .submit-btn {
+  min-height: 44px;
+}
+
+/* Prevent Safari iOS zooming issues on form inputs */
+input, textarea {
+  font-size: 16px; /* Avoids iOS auto-zoom */
+}
+</style>
+
 </head>
 <body>
     <div class="floating-elements">
@@ -496,66 +535,50 @@ We work with founders, entrepreneurs, and small teams to build sustainable syste
 </section>
 
     <section id="bio" class="bio">
-        <div class="container">
-            <div class="bio-grid">
-                <div class="bio-image">
-    <img src="Kristen-headshot.png" alt="Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
-</div>
-                <div class="bio-content">
-                    <h2>Kristen Lopez, Co-Founder</h2>
-                    <p>
-                        Kristen has built her career at the intersection of finance, investment strategy, and innovative business models. Her expertise spans financial modeling, asset management, and strategic planning within high-growth startups and emerging industries.
-                    </p>
-                    <p>
-                        Most recently, she served as Senior Director of Asset Management at AutoCamp, a pioneer in the outdoor hospitality space. There, she led key initiatives across investment strategy and financial operations, helping shape the company’s growth trajectory. Kristen brings a deep passion for excellence, adaptability, and long-term value creation.
-                    </p>
-                    <p>
-                        She holds a degree in Political Science from UCLA, graduating magna cum laude, and is currently pursuing her MBA at UCLA Anderson. She specializes in building robust financial models, optimizing asset performance, and driving data-informed decisions that support sustainable growth in dynamic startup environments.
-                    </p>
-                    <p>
-                       When she’s not working on a project, Kristen can be found playing pickleball, volunteering locally, enjoying the outdoors, trying new restaurants, or traveling to explore new places. 
-                    </p>
-                    <div class="highlights">
-                        <span class="highlight-tag">Financial Modeling</span>
-                        <span class="highlight-tag">Asset Management</span>
-                        <span class="highlight-tag">Investment Strategy</span>
-                        <span class="highlight-tag">Startup Finance</span>
-                        <span class="highlight-tag">MBA Candidate</span>
-                        <span class="highlight-tag">UCLA Alumni</span>
-                    </div>
-                </div>
-            </div>
+  <div class="container two-column-bio">
+    <!-- Kristen Bio -->
+    <div class="bio-block">
+      <div class="bio-image">
+        <img src="Kristen-headshot.png" alt="Kristen Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+      </div>
+      <div class="bio-content">
+        <h2>Kristen Lopez, Co-Founder</h2>
+        <p>Kristen specializes in finance, investment strategy, and startup operations. At AutoCamp, she led asset management and investment initiatives, helping guide the company’s national expansion in outdoor hospitality.</p>
+        <p>She brings expertise in financial modeling, portfolio performance, and strategic planning — with a focus on scalable, data-informed systems that support high-growth environments.</p>
+        <p>Kristen earned her degree in Political Science from UCLA and is currently pursuing her MBA at UCLA Anderson. Outside of work, she enjoys playing pickleball, traveling, and exploring new restaurants.</p>
+        <div class="highlights">
+          <span class="highlight-tag">Financial Modeling</span>
+          <span class="highlight-tag">Asset Management</span>
+          <span class="highlight-tag">Investment Strategy</span>
+          <span class="highlight-tag">Startup Finance</span>
+          <span class="highlight-tag">MBA Candidate</span>
+          <span class="highlight-tag">UCLA Alumni</span>
         </div>
-    </section>
-    <section id="partner-bio" class="bio">
-        <div class="container">
-            <div class="bio-grid">
-                <div class="bio-image">
-    <img src="Chiara-headshot.png" alt="Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
-</div>
-                <div class="bio-content">
-                    <h2>Chiara DiMarco, Co-Founder</h2>
-                    <p>
-                        Chiara DiMarco is a former collegiate athlete with a deep-rooted passion for sports, equity, and community impact. She holds a degree in Business and Marketing from Cal State LA and brings nearly a decade of experience as a Research Administrator at UC Santa Barbara, where she managed multimillion-dollar grants focused on social sciences and equity research.
-                    </p>
-                    <p>
-                        Her background blends operational expertise, strategic thinking, and a strong commitment to accessible, mission-driven work. Chiara supports small businesses and startups by helping them build solid foundations across marketing, client strategy, and administrative systems — always with an eye toward long-term impact.
-                    </p>
-                    <p>
-                        When she’s not working, you’ll likely find her outdoors, coaching, watching sports, or traveling to new places.
-                    </p>
-                    <div class="highlights">
-                        <span class="highlight-tag">Marketing Strategy</span>
-                        <span class="highlight-tag">Grant Management</span>
-                        <span class="highlight-tag">Graphic Design</span>
-                        <span class="highlight-tag">Website Creation/Design</span>
-                        <span class="highlight-tag">Client Strategy</span>
-                        <span class="highlight-tag">Coaching/Mentorship</span>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+
+    <!-- Chiara Bio -->
+    <div class="bio-block">
+      <div class="bio-image">
+        <img src="Chiara-headshot.png" alt="Chiara Headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+      </div>
+      <div class="bio-content">
+        <h2>Chiara DiMarco, Co-Founder</h2>
+        <p>Chiara blends a background in business, marketing, and community-driven work. At UC Santa Barbara, she managed multimillion-dollar grants focused on equity and social science research.</p>
+        <p>She helps small businesses build strong foundations across marketing, client strategy, and operations — always with a focus on long-term impact and accessibility.</p>
+        <p>Chiara holds a degree in Business and Marketing from Cal State LA. Outside of work, she enjoys coaching, traveling, and spending time outdoors.</p>
+        <div class="highlights">
+          <span class="highlight-tag">Marketing Strategy</span>
+          <span class="highlight-tag">Grant Management</span>
+          <span class="highlight-tag">Graphic Design</span>
+          <span class="highlight-tag">Website Creation/Design</span>
+          <span class="highlight-tag">Client Strategy</span>
+          <span class="highlight-tag">Coaching/Mentorship</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="experience" class="experience">
         <div class="container">
