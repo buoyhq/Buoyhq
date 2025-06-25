@@ -256,7 +256,7 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 1.75rem;
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
         }
@@ -612,24 +612,25 @@ We work with founders, entrepreneurs, and small teams to build sustainable syste
                 </div>
                 <div class="experience-card">
                     <h3>Harry Marra</h3>
-                    <div class="company">Elite Sports Performance/Athletic Coaching</div>
+                    <div class="company">Elite Athletic Coaching</div>
                     <p>Partnered with world-renowned track and field coach Harry Marra, best known for coaching Olympic decathlon gold medalist Ashton Eaton. We provided design and marketing support to help elevate his coaching brand and communicate his legacy in athletic development.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
+   <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+             <form id="contactForm" class="contact-form">
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
-                <input type="text" placeholder="Subject" required>
-                <textarea placeholder="Your Message" required></textarea>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit" class="submit-btn">Send Message</button>
+                <p id="form-status" style="margin-top: 1rem; color: #99cc99;"></p>
             </form>
         </div>
     </section>
@@ -641,7 +642,6 @@ We work with founders, entrepreneurs, and small teams to build sustainable syste
     <img src="Buoy-Logo.png" alt="Buoy Logo" style="height: 40px;">
 </div>
                 <ul class="footer-links">
-    <li><a href="mailto:buoyteams@gmail.com">Email</a></li>
     <li><a href="#home">Home</a></li>
 </ul>
             </div>
@@ -731,9 +731,40 @@ We work with founders, entrepreneurs, and small teams to build sustainable syste
                 element.remove();
             }, 25000);
         }
-
+        // Create a few bubbles immediately
+            createFloatingElement();
+            createFloatingElement();
+            createFloatingElement();
         // Create floating elements periodically
         setInterval(createFloatingElement, 3000);
     </script>
+    <script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch('https://formsubmit.co/ajax/kristen@buoyhq.com', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json'
+      },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('form-status').textContent = 'Thanks! Your message was sent.';
+        form.reset();
+      } else {
+        document.getElementById('form-status').textContent = 'Oops! Something went wrong.';
+      }
+    })
+    .catch(error => {
+      document.getElementById('form-status').textContent = 'There was an error sending your message.';
+    });
+  });
+</script>
+
 </body>
 </html>
