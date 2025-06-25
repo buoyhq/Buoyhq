@@ -739,10 +739,14 @@ We work with founders, entrepreneurs, and small teams to build sustainable syste
         setInterval(createFloatingElement, 3000);
     </script>
     <script>
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById('contactForm');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const form = e.target;
     const formData = new FormData(form);
 
     fetch('https://formsubmit.co/ajax/kristen@buoyhq.com', {
@@ -764,6 +768,7 @@ We work with founders, entrepreneurs, and small teams to build sustainable syste
       document.getElementById('form-status').textContent = 'There was an error sending your message.';
     });
   });
+});
 </script>
 
 </body>
